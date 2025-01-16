@@ -1,0 +1,22 @@
+name: Add comment to new issue
+
+on:
+  issues:
+    types: [opened]
+  workflow_dispatch:
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Create comment with action
+          uses: peter-evans/create-or-update-comment@v4
+          with:
+            issue-number: ${{ github.event.issue.number }}
+            body: |
+              This is a multi-line test comment
+              - With GitHub **Markdown** :sparkles:
+              - Created by [create-or-update-comment][1]
+
+              [1]: https://github.com/peter-evans/create-or-update-comment
+            reactions: '+1'
