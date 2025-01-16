@@ -3,14 +3,13 @@ name: Add comment to new issue
 on:
   issues:
     types: [opened]
-  workflow_dispatch:
 
 jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
         - name: Create comment with action
-          uses: peter-evans/create-or-update-comment@v4
+          uses: peter-evans/create-or-update-comment@v1
           with:
             issue-number: ${{ github.event.issue.number }}
             body: |
